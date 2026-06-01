@@ -43,7 +43,8 @@ RUN unset CFLAGS CXXFLAGS FFLAGS LDFLAGS build_alias host_alias
 # visiting https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/download-go.html
 # and selecting Source code > PC - Linux - Debian, checking Xronos (only), and
 # then Submit. The tar file download URL can be inspected in the browser.
-RUN wget -O heasoft-src.tar.gz 'https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/tarit/tarit.pl?mode=download&arch=src&src_pc_linux_debian=Y&src_other_specify=&xanadu=xronos'
+RUN curl 'https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/tarit/tarit.pl?mode=download&arch=src&src_pc_linux_debian=Y&src_other_specify=&xronos=xronos' --output heasoft-src.tar.gz
+
 RUN tar xfz heasoft-src.tar.gz
 
 # Compile and install to /opt/heasoft.
